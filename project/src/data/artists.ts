@@ -3,7 +3,7 @@ import { Artist } from '../types';
 export const artists: Record<'kato' | 'realzn', Artist> = {
   kato: {
     name: 'KATO',
-    description: 'Minimalist electronic artist pushing the boundaries of abstract sound design. Known for creating immersive sonic landscapes that blend organic and digital elements.',
+    description: 'Kato is an artist with an incredible ear, immersed in electronic music since a young age. He has developed his unique style, blending minimalist elements with immersive sound design. Known for creating captivating, abstract soundscapes, his music pushes the boundaries of electronic music, inviting listeners into his sonic world.',
     social: {
       instagram: 'https://instagram.com/kato',
       spotify: 'https://open.spotify.com/artist/kato',
@@ -18,7 +18,7 @@ export const artists: Record<'kato' | 'realzn', Artist> = {
   },
   realzn: {
     name: 'REALZN',
-    description: 'Celestial soundscape creator merging dark ambient textures with ethereal melodies. Each track is a journey through cosmic frequencies and otherworldly atmospheres.',
+    description: 'Realzn is passionate about the world behind the screen, using technology to shape sound. With a deep understanding of music production, he merges his technical skills with his creative vision, crafting celestial soundscapes. His music invites listeners on a journey through cosmic frequencies and dark, ethereal atmospheres.',
     social: {
       instagram: 'https://instagram.com/realzn',
       spotify: 'https://open.spotify.com/artist/realzn',
