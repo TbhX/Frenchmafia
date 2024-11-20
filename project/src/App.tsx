@@ -1,3 +1,4 @@
+// App.tsx
 import React, { useState } from 'react';
 import ThemeSwitch from './components/ThemeSwitch';
 import ArtistInfo from './components/ArtistInfo';
