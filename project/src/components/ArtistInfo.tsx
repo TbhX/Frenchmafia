@@ -19,7 +19,7 @@ const ArtistInfo: React.FC<ArtistInfoProps> = ({ artist, theme }) => {
       transition={{ duration: 0.6 }}
       className="text-center lg:text-left"
     >
-      <h1 className={`text-5xl font-bold mb-6 ${textColor} tracking-wider`}>
+      <h1 className={`text-3xl font-bold mb-6 ${textColor} tracking-wider`}>
         {artist.name}
       </h1>
       <p className={`text-lg mb-8 ${textColor} opacity-90 leading-relaxed`}>
