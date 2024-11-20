@@ -11,14 +11,14 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
 
   return (
     <motion.div
-      className={`w-full sm:w-1/2 h-64 sm:h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
+      className={`w-full h-64 relative ${isKato ? 'bg-white' : 'bg-black'}`}
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 400 }}
     >
       {/* Title */}
       <div
-        className={`absolute ${isKato ? 'left-8' : 'right-8'} top-8 text-3xl sm:text-4xl font-bold tracking-[0.2em] z-10 ${
+        className={`absolute ${isKato ? 'left-8' : 'right-8'} top-8 text-3xl font-bold tracking-[0.2em] z-10 ${
           isKato ? 'text-black' : 'text-white'
         }`}
       >
@@ -31,7 +31,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
           // Kato Side
           <div className="relative w-full h-full">
             {/* Minimalist Lines */}
-            <div className="absolute left-24 sm:left-32 top-32 space-y-2">
+            <div className="absolute left-32 top-32 space-y-2">
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
@@ -46,7 +46,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
 
             {/* Circular Pattern */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80">
+              <div className="relative w-80 h-80">
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
@@ -101,7 +101,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
             </div>
 
             {/* Celestial Objects */}
-            <div className="absolute right-16 bottom-16 sm:right-24 sm:bottom-24 w-48 h-48 sm:w-64 sm:h-64">
+            <div className="absolute right-24 bottom-24 w-64 h-64">
               <div className="relative w-full h-full">
                 {[...Array(5)].map((_, i) => (
                   <div
