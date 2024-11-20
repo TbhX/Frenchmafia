@@ -11,20 +11,20 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
 
   return (
     <motion.div
-      className={`w-full sm:w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
+      className={`w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 400 }}
     >
       {/* Title */}
-      <div className={`absolute ${isKato ? 'top-6 left-6' : 'top-6 right-6'} text-2xl sm:text-3xl tracking-wider font-bold ${isKato ? 'text-black' : 'text-white'}`}>
+      <div className={`absolute ${isKato ? 'top-6 left-6' : 'top-6 right-6'} text-3xl tracking-wider font-bold ${isKato ? 'text-black' : 'text-white'}`}>
         {side.toUpperCase()}
       </div>
 
       {isKato ? (
         // Kato Side Design
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-48 sm:w-64 h-48 sm:h-64 relative">
+          <div className="w-64 h-64 relative">
             {/* Main Circle */}
             <div className="absolute inset-0 border-2 border-black rounded-full" />
 
@@ -57,7 +57,7 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
       ) : (
         // Realzn Side Design
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <div className="w-48 sm:w-64 h-48 sm:h-64 relative">
+          <div className="w-64 h-64 relative">
             {/* Smoke Effect */}
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-gradient-radial from-gray-800 via-transparent to-black opacity-80" />
@@ -81,7 +81,7 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
             </div>
 
             {/* Celestial Objects */}
-            <div className="absolute right-0 bottom-0 w-32 sm:w-48 h-32 sm:h-48">
+            <div className="absolute right-0 bottom-0 w-32 h-32">
               {[...Array(3)].map((_, i) => (
                 <div
                   key={i}
