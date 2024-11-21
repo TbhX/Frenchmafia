@@ -23,6 +23,27 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     </div>
   );
 
+  // Fonction pour afficher les éléments animés sur Kato
+  const renderKatoElements = () => (
+    <div className="absolute inset-0 flex items-center justify-center">
+      {[...Array(20)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute bg-black rounded-full"
+          style={{
+            width: `${Math.random() * 6 + 3}px`,  // Taille des éléments
+            height: `${Math.random() * 6 + 3}px`,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            opacity: 0.2 + Math.random() * 0.5,  // Transparence aléatoire
+            animation: `float ${Math.random() * 5 + 3}s infinite ease-in-out`,
+            transform: `scale(${Math.random() * 1 + 0.5})`
+          }}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <motion.div
       className={`w-full md:w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
@@ -42,11 +63,14 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       {/* Side Specific Design */}
       <div className="absolute inset-0 flex items-center justify-center">
         {isKato ? (
-          // Kato Side with minimalist light theme
+          // Kato Side with animated black elements
           <div className="relative w-full h-full">
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
             
+            {/* Render animated black elements */}
+            {renderKatoElements()}
+
             {/* Render Soleil icon */}
             {renderSunMoon()}
           </div>
