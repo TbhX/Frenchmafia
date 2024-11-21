@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
-import ThemeSwitch from 'ThemeSwitch';
+import ThemeSwitch from './ThemeSwitch';
 
 
 const App: React.FC = () => {
