@@ -26,7 +26,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   // Fonction pour simuler la pluie avec des éléments tombant du haut
   const renderRainEffect = () => (
     <div className="absolute inset-0">
-      {[...Array(30)].map((_, i) => (
+      {[...Array(50)].map((_, i) => (
         <div
           key={i}
           className="absolute bg-black rounded-full"
