@@ -27,7 +27,7 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
       {isKato ? (
         // Kato Side Design
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-48 md:w-64 h-48 md:h-64 relative">
+          <div className="w-48 md:w-64 h-38 md:h-64 relative">
             {/* Main Circle */}
             <div className="absolute inset-0 border-2 border-black rounded-full" />
 
