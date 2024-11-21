@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes Soleil et Lune
 
@@ -8,11 +8,17 @@ interface AlbumCoverProps {
 }
 
 const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
+  const [isClicked, setIsClicked] = useState(false);
   const isKato = side === 'kato';
 
   // Fonction pour afficher l'icône Soleil/Lune
   const renderSunMoon = () => (
-    <div className="absolute inset-0 flex items-center justify-center">
+    <div
+      className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-all duration-300 ease-out ${
+        isClicked ? 'translate-x-full opacity-0' : ''
+      }`}
+      onClick={scrollToArtworks}
+    >
       {isKato ? (
         // Icône Soleil pour Kato
         <FaSun className="text-black" size={60} />
@@ -44,12 +50,24 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     </div>
   );
 
+  // Fonction pour faire défiler la page vers la section "Sons/Artworks"
+  const scrollToArtworks = () => {
+    setIsClicked(true); // Déclenche l'animation de l'icône
+    setTimeout(() => {
+      const artworksSection = document.getElementById('artworks-section');
+      if (artworksSection) {
+        artworksSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsClicked(false); // Réinitialise après le défilement
+    }, 500); // Attendre la fin de l'animation de l'icône
+  };
+
   return (
     <motion.div
       className={`w-full h-screen relative ${isKato ? 'bg-white' : 'bg-black'}`} // Utilisation de h-screen pour une couverture totale
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 400 }}
+      transition={{ type: 'spring', stiffness: 400 }}
     >
       {/* Title */}
       <div
@@ -101,6 +119,12 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
             {renderSunMoon()}
           </div>
         )}
+      </div>
+
+      {/* Section des Sons ou Artworks */}
+      <div id="artworks-section" className="w-full h-screen bg-gray-800 flex items-center justify-center text-white">
+        <h2 className="text-3xl font-bold">Artworks / Sounds</h2>
+        <p className="mt-4">Explore the music or artwork here!</p>
       </div>
     </motion.div>
   );
