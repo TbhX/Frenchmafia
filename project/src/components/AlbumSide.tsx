@@ -1,27 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaSun, FaMoon } from 'react-icons/fa'; // Import des icônes Soleil et Lune
 
-interface AlbumCoverProps {
+interface AlbumSideProps {
   side: 'kato' | 'realzn';
   onClick: () => void;
 }
 
-const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
+const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
   const isKato = side === 'kato';
-
-  // Fonction pour afficher l'icône Soleil/Lune
-  const renderSunMoon = () => (
-    <div className="absolute inset-0 flex items-center justify-center">
-      {isKato ? (
-        // Icône Soleil pour Kato
-        <FaSun className="text-black" size={80} />
-      ) : (
-        // Icône Lune pour Realzn
-        <FaMoon className="text-white" size={80} />
-      )}
-    </div>
-  );
 
   return (
     <motion.div
@@ -32,56 +18,67 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     >
       {/* Title */}
       <div
-        className={`absolute ${isKato ? 'left-8' : 'right-8'} top-8
-          text-xl md:text-3xl font-bold tracking-[0.2em] z-10
-          ${isKato ? 'text-black' : 'text-white'}`}
+        className={`absolute top-6 left-1/2 transform -translate-x-1/2 text-xl md:text-3xl tracking-wider font-bold 
+        ${isKato ? 'text-black' : 'text-white'}`}
       >
         {side.toUpperCase()}
       </div>
 
-      {/* Side Specific Design */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        {isKato ? (
-          // Kato Side with minimalist light theme
-          <div className="relative w-full h-full">
+      {isKato ? (
+        // Kato Side Design with a light theme similar to realzn
+        <div className="absolute inset-0 flex items-center justify-center bg-white">
+          <div className="w-48 md:w-64 h-48 md:h-64 relative">
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
-            
-            {/* Render Soleil icon */}
-            {renderSunMoon()}
           </div>
-        ) : (
-          // Realzn Side with dark theme
-          <div className="relative w-full h-full overflow-hidden">
-            {/* Smoke Effect */}
+        </div>
+      ) : (
+        // Realzn Side Design with dark theme
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black to-gray-800">
+          <div className="w-48 md:w-64 h-48 md:h-64 relative">
+            {/* Smoke Effect for realzn */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-radial from-gray-900 via-black to-black opacity-90" />
+              <div className="absolute inset-0 bg-gradient-radial from-gray-800 via-transparent to-black opacity-80" />
               <div className="absolute inset-0 animate-smoke">
-                {[...Array(30)].map((_, i) => (
+                {[...Array(20)].map((_, i) => (
                   <div
                     key={i}
-                    className="absolute bg-white blur-[2px]"
+                    className="absolute rounded-full bg-white"
                     style={{
-                      width: `${Math.random() * 4 + 1}px`,
-                      height: `${Math.random() * 4 + 1}px`,
+                      width: `${Math.random() * 3 + 1}px`,
+                      height: `${Math.random() * 3 + 1}px`,
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
-                      opacity: Math.random() * 0.5,
-                      transform: `scale(${Math.random() * 2 + 1})`,
-                      animation: `float ${Math.random() * 5 + 3}s infinite ease-in-out`
+                      opacity: Math.random() * 0.4,
+                      filter: 'blur(1px)',
+                      animation: `float ${Math.random() * 4 + 3}s infinite ease-in-out`,
                     }}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Render Lune icon */}
-            {renderSunMoon()}
+            {/* Celestial Objects */}
+            <div className="absolute right-0 bottom-0 w-24 md:w-32 h-24 md:h-32">
+              {[...Array(3)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute bg-white rounded-full blur-[1px]"
+                  style={{
+                    width: `${8 - i * 2}px`,
+                    height: `${8 - i * 2}px`,
+                    right: `${i * 20}px`,
+                    bottom: `${i * 15}px`,
+                    opacity: 0.6 - i * 0.1,
+                  }}
+                />
+              ))}
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </motion.div>
   );
 };
 
-export default AlbumCover;
+export default AlbumSide;
