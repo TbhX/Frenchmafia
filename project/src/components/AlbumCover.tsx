@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 interface AlbumCoverProps {
   side: 'kato' | 'realzn';
   onClick: () => void;
-}
+} 
 
 const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   const isKato = side === 'kato';
