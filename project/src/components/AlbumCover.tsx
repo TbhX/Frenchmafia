@@ -9,6 +9,21 @@ interface AlbumCoverProps {
 const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   const isKato = side === 'kato';
 
+  // Fonction pour générer l'illustration Soleil/Lune
+  const renderSunMoon = () => (
+    <div className="absolute inset-0 flex items-center justify-center">
+      {isKato ? (
+        <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-black rounded-full opacity-60" />
+        </div>
+      ) : (
+        <div className="w-32 h-32 bg-black rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-white rounded-full opacity-60" />
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <motion.div
       className={`w-full md:w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
@@ -33,23 +48,8 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
             
-            {/* Minimalist Design (No circles or lines) */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-64 h-64">
-                {/* Simple floating dots */}
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1 h-1 bg-black rounded-full"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                      opacity: 0.3
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+            {/* Replace circular pattern with Sun illustration */}
+            {renderSunMoon()}
           </div>
         ) : (
           // Realzn Side with dark theme
@@ -76,24 +76,8 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
               </div>
             </div>
 
-            {/* Celestial Objects */}
-            <div className="absolute right-16 bottom-16 w-48 h-48">
-              <div className="relative w-full h-full">
-                {[...Array(5)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute bg-white rounded-full blur-[1px]"
-                    style={{
-                      width: `${12 - i * 2}px`,
-                      height: `${12 - i * 2}px`,
-                      right: `${i * 25}px`,
-                      bottom: `${i * 20}px`,
-                      opacity: 0.7 - i * 0.1
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+            {/* Replace celestial objects with Moon illustration */}
+            {renderSunMoon()}
           </div>
         )}
       </div>
