@@ -5,7 +5,27 @@
 @layer base {
   body {
     @apply antialiased;
+    transition: background-color 0.7s, color 0.7s; /* Transition pour les changements de thème */
   }
+}
+
+/* Thème Kato */
+.theme-kato {
+  --bg-color: #f9f9f9;
+  --text-color: #1a202c;
+  --accent-color: #e94560;
+}
+
+/* Thème Realzn */
+.theme-realzn {
+  --bg-color: #1a202c;
+  --text-color: #ffffff;
+  --accent-color: #8e44ad;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 @layer utilities {
