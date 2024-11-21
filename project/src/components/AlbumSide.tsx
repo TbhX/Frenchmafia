@@ -31,7 +31,7 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
             {/* Light gradient background */}
             
         </div>
-      ) : (
+      // ) : (
         // Realzn Side Design with dark theme
         
           <div className="w-48 md:w-64 h-48 md:h-64 relative">
