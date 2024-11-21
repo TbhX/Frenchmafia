@@ -17,7 +17,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-all duration-300 ease-out ${
         isClicked ? 'translate-y-full opacity-0' : ''
       }`}
-      onClick={scrollToArtworks}
+      onClick={scrollToPlayer}
     >
       {isKato ? (
         // Icône Soleil pour Kato
@@ -29,13 +29,13 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     </div>
   );
 
-  // Fonction pour faire défiler la page vers la section "Sons/Artworks"
-  const scrollToArtworks = () => {
+  // Fonction pour faire défiler la page vers le lecteur en bas
+  const scrollToPlayer = () => {
     setIsClicked(true); // Déclenche l'animation de l'icône
     setTimeout(() => {
-      const artworksSection = document.getElementById('artworks-section');
-      if (artworksSection) {
-        artworksSection.scrollIntoView({ behavior: 'smooth' });
+      const playerSection = document.getElementById('player-section');
+      if (playerSection) {
+        playerSection.scrollIntoView({ behavior: 'smooth' });
       }
       setIsClicked(false); // Réinitialise après le défilement
     }, 500); // Attendre la fin de l'animation de l'icône
@@ -100,10 +100,10 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
         )}
       </div>
 
-      {/* Section des Sons ou Artworks */}
-      <div id="artworks-section" className="w-full h-screen bg-gray-800 flex items-center justify-center text-white">
-        <h2 className="text-3xl font-bold">Artworks / Sounds</h2>
-        <p className="mt-4">Explore the music or artwork here!</p>
+      {/* Section du Lecteur en bas */}
+      <div id="player-section" className="w-full h-screen bg-gray-800 flex items-center justify-center text-white">
+        <h2 className="text-3xl font-bold">Le Lecteur de Musique / Sons</h2>
+        <p className="mt-4">Explorez la musique ou l'art ici!</p>
       </div>
     </motion.div>
   );
