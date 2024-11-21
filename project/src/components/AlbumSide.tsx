@@ -18,18 +18,18 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
     >
       {/* Title */}
       <div
-        className={`absolute top-6 left-1/2 transform -translate-x-1/2 text-3xl tracking-wider font-bold 
+        className={`absolute top-6 left-1/2 transform -translate-x-1/2 text-xl md:text-3xl tracking-wider font-bold 
         ${isKato ? 'text-black' : 'text-white'}`}
       >
         {side.toUpperCase()}
       </div>
 
       {isKato ? (
-        // Kato Side Design with a white background
+        // Kato Side Design with a light theme similar to realzn
         <div className="absolute inset-0 flex items-center justify-center bg-white">
           <div className="w-48 md:w-64 h-48 md:h-64 relative">
-            {/* You can add any design here, like a simple gradient or some other design */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-30" />
+            {/* Light gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
           </div>
         </div>
       ) : (
