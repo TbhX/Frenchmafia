@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
+import ThemeSwitch from './ThemeSwitch';
+import './App.css'; // Ajoute ton fichier CSS ici si nécessaire
+
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'kato' | 'realzn'>('kato'); // État pour gérer le thème
- 
 
   // Fonction pour basculer entre les thèmes
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'kato' ? 'realzn' : 'kato'));
+  const toggleTheme = (newTheme: 'kato' | 'realzn') => {
+    setTheme(newTheme);
   };
 
   return (
@@ -16,7 +17,7 @@ const App: React.FC = () => {
         <h1 className="text-3xl font-bold">Theme Switcher</h1>
 
         {/* Bouton de changement de thème */}
-        <button onClick={toggleTheme} className="text-xl p-2 rounded-full">
+        <button onClick={() => toggleTheme(theme === 'kato' ? 'realzn' : 'kato')} className="text-xl p-2 rounded-full">
           {theme === 'kato' ? (
             <FaSun className="text-yellow-400" />
           ) : (
@@ -26,7 +27,7 @@ const App: React.FC = () => {
       </header>
 
       <main className="flex items-center justify-center h-screen">
-        <AlbumCover side={theme} onClick={() => console.log('Album clicked')} />
+        <ThemeSwitch currentTheme={theme} onThemeChange={toggleTheme} />
       </main>
     </div>
   );
