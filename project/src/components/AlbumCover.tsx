@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 interface AlbumCoverProps {
   side: 'kato' | 'realzn';
   onClick: () => void;
-} 
+}
 
 const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   const isKato = side === 'kato';
@@ -52,6 +52,9 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
           <div className="relative w-full h-full">
             {/* Realzn Design */}
             <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black opacity-90"></div>
+            <div className="absolute text-white text-lg font-semibold tracking-wide">
+              Realzn Theme Active
+            </div>
           </div>
         )}
       </div>
