@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useState } from 'react';
 import ThemeSwitch from './components/ThemeSwitch';
 import ArtistInfo from './components/ArtistInfo';
@@ -9,9 +8,11 @@ function App() {
   const [theme, setTheme] = useState<'kato' | 'realzn'>('kato');
 
   return (
-    <div className={`min-h-screen transition-colors duration-700 ${
-      theme === 'kato' ? 'bg-white' : 'bg-black'
-    }`}>
+    <div
+      className={`min-h-screen transition-colors duration-700 ${
+        theme === 'kato' ? 'bg-white' : 'bg-black'
+      }`}
+    >
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[calc(100vh-4rem)]">
           {/* Album Cover */}
