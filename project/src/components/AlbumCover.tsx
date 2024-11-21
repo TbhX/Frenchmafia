@@ -101,10 +101,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       </div>
 
       {/* Section du Lecteur en bas */}
-      <div id="player-section" className="w-full h-screen bg-gray-800 flex items-center justify-center text-white">
-        <h2 className="text-3xl font-bold">Le Lecteur de Musique / Sons</h2>
-        <p className="mt-4">Explorez la musique ou l'art ici!</p>
-      </div>
+      
     </motion.div>
   );
 };
