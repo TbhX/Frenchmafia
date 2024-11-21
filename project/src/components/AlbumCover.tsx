@@ -11,18 +11,14 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
 
   return (
     <motion.div
-      className={`w-full lg:w-[50%] aspect-square relative ${
-        isKato ? 'bg-white' : 'bg-black'
-      }`}
+      className={`w-full lg:w-[50%] aspect-square relative ${isKato ? 'bg-white' : 'bg-black'}`}
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 400 }}
     >
       {/* Title */}
       <div
-        className={`absolute ${isKato ? 'left-4' : 'right-4'} top-4 
-          text-3xl font-bold tracking-wide z-10
-          ${isKato ? 'text-black' : 'text-white'}`}
+        className={`absolute ${isKato ? 'left-4' : 'right-4'} top-4 text-3xl font-bold tracking-wide z-10 ${isKato ? 'text-black' : 'text-white'}`}
       >
         {side.toUpperCase()}
       </div>
