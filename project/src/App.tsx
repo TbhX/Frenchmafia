@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'kato' | 'realzn'>('kato'); // État pour gérer le thème
-
+ 
 
   // Fonction pour basculer entre les thèmes
   const toggleTheme = () => {
