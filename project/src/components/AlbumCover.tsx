@@ -11,15 +11,15 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
 
   return (
     <motion.div
-      className={`w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
+      className={`w-full md:w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 400 }}
     >
       {/* Title */}
-      <div 
-        className={`absolute ${isKato ? 'left-8' : 'right-8'} top-8 
-          text-4xl font-bold tracking-[0.2em] z-10
+      <div
+        className={`absolute ${isKato ? 'left-8' : 'right-8'} top-8
+          text-xl md:text-3xl font-bold tracking-[0.2em] z-10
           ${isKato ? 'text-black' : 'text-white'}`}
       >
         {side.toUpperCase()}
@@ -28,55 +28,31 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       {/* Side Specific Design */}
       <div className="absolute inset-0 flex items-center justify-center">
         {isKato ? (
-          // Kato Side
+          // Kato Side with minimalist light theme
           <div className="relative w-full h-full">
-            {/* Minimalist Lines */}
-            <div className="absolute left-24 top-32 space-y-2">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="h-px bg-black"
-                  style={{
-                    width: `${80 + i * 20}px`,
-                    opacity: 0.3 + i * 0.1
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Circular Pattern */}
+            {/* Light gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
+            
+            {/* Minimalist Design (No circles or lines) */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="relative w-64 h-64">
-                {[...Array(3)].map((_, i) => (
+                {/* Simple floating dots */}
+                {[...Array(8)].map((_, i) => (
                   <div
                     key={i}
-                    className="absolute inset-0 border border-black rounded-full"
+                    className="absolute w-1 h-1 bg-black rounded-full"
                     style={{
-                      opacity: 0.2 - i * 0.05,
-                      transform: `scale(${1 - i * 0.1})`
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      opacity: 0.3
                     }}
                   />
                 ))}
               </div>
             </div>
-
-            {/* Dots */}
-            <div className="absolute inset-0">
-              {[...Array(8)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-black rounded-full"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    opacity: 0.3
-                  }}
-                />
-              ))}
-            </div>
           </div>
         ) : (
-          // Realzn Side
+          // Realzn Side with dark theme
           <div className="relative w-full h-full overflow-hidden">
             {/* Smoke Effect */}
             <div className="absolute inset-0">
