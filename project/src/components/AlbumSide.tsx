@@ -33,11 +33,11 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
         </div>
       ) : (
         // Realzn Side Design with dark theme
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black to-gray-800">
+        
           <div className="w-48 md:w-64 h-48 md:h-64 relative">
             {/* Smoke Effect for realzn */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-radial from-gray-800 via-transparent to-black opacity-80" />
+              
               <div className="absolute inset-0 animate-smoke">
                 {[...Array(20)].map((_, i) => (
                   <div
