@@ -37,4 +37,4 @@ const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ currentTheme, onThemeChange }
   );
 };
 
-export default ThemeSwitch;
+export default ThemeSwitch; 
