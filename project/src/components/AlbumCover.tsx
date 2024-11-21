@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa'; // Import des icônes Soleil et Lune
 
 interface AlbumCoverProps {
   side: 'kato' | 'realzn';
@@ -9,17 +10,15 @@ interface AlbumCoverProps {
 const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   const isKato = side === 'kato';
 
-  // Fonction pour générer l'illustration Soleil/Lune
+  // Fonction pour afficher l'icône Soleil/Lune
   const renderSunMoon = () => (
     <div className="absolute inset-0 flex items-center justify-center">
       {isKato ? (
-        <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center">
-          <div className="w-16 h-16 bg-black rounded-full opacity-60" />
-        </div>
+        // Icône Soleil pour Kato
+        <FaSun className="text-black" size={80} />
       ) : (
-        <div className="w-32 h-32 bg-black rounded-full flex items-center justify-center">
-          <div className="w-16 h-16 bg-white rounded-full opacity-60" />
-        </div>
+        // Icône Lune pour Realzn
+        <FaMoon className="text-white" size={80} />
       )}
     </div>
   );
@@ -48,7 +47,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
             
-            {/* Replace circular pattern with Sun illustration */}
+            {/* Render Soleil icon */}
             {renderSunMoon()}
           </div>
         ) : (
@@ -76,7 +75,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
               </div>
             </div>
 
-            {/* Replace celestial objects with Moon illustration */}
+            {/* Render Lune icon */}
             {renderSunMoon()}
           </div>
         )}
