@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaSun, FaMoon } from 'react-icons/fa'; // Import des icônes Soleil et Lune
+import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes Soleil et Lune
 
 interface AlbumCoverProps {
   side: 'kato' | 'realzn';
@@ -23,40 +23,21 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     </div>
   );
 
-  // Fonction pour afficher les éléments animés sur Kato (plus subtils)
-  const renderKatoElements = () => (
-    <div className="absolute inset-0 flex items-center justify-center">
-      {[...Array(10)].map((_, i) => (
+  // Fonction pour simuler la pluie avec des éléments tombant du haut
+  const renderRainEffect = () => (
+    <div className="absolute inset-0">
+      {[...Array(30)].map((_, i) => (
         <div
           key={i}
           className="absolute bg-black rounded-full"
           style={{
-            width: `${Math.random() * 4 + 1}px`,  // Taille des éléments réduite
-            height: `${Math.random() * 4 + 1}px`,
-            top: `${Math.random() * 100}%`,
+            width: `${Math.random() * 3 + 2}px`,  // Taille des gouttes
+            height: `${Math.random() * 3 + 2}px`,
+            top: `${Math.random() * -100}%`,  // Positionnement en dehors du haut de l'écran
             left: `${Math.random() * 100}%`,
-            opacity: 0.1 + Math.random() * 0.3,  // Opacité plus subtile
-            animation: `float ${Math.random() * 3 + 2}s infinite ease-in-out`,
-            transform: `scale(${Math.random() * 1 + 0.5})`
-          }}
-        />
-      ))}
-    </div>
-  );
-
-  // Élément propre au côté Kato (ligne flottante subtile)
-  const renderKatoLines = () => (
-    <div className="absolute inset-0 flex items-center justify-center">
-      {[...Array(3)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute border-t-2 border-black opacity-30"
-          style={{
-            width: `${Math.random() * 50 + 50}%`,  // Longueur de la ligne variable
-            top: `${Math.random() * 100}%`,
-            animation: `moveLine ${Math.random() * 3 + 2}s infinite ease-in-out`,
-            opacity: 0.3 + Math.random() * 0.4, // Opacité subtile
-            transform: `rotate(${Math.random() * 45}deg)`  // Rotation aléatoire
+            opacity: 0.2 + Math.random() * 0.5, // Opacité subtile
+            animation: `fall ${Math.random() * 2 + 3}s infinite linear`, // Animation tombante
+            animationDelay: `${Math.random() * 3}s`, // Délais d'animation aléatoire
           }}
         />
       ))}
@@ -82,22 +63,17 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       {/* Side Specific Design */}
       <div className="absolute inset-0 flex items-center justify-center">
         {isKato ? (
-          // Kato Side with animated black elements and subtle lines
           <div className="relative w-full h-full">
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
             
-            {/* Render animated black elements */}
-            {renderKatoElements()}
-
-            {/* Render subtle floating lines */}
-            {renderKatoLines()}
+            {/* Simuler la pluie */}
+            {renderRainEffect()}
 
             {/* Render Soleil icon */}
             {renderSunMoon()}
           </div>
         ) : (
-          // Realzn Side with dark theme
           <div className="relative w-full h-full overflow-hidden">
             {/* Smoke Effect */}
             <div className="absolute inset-0">
