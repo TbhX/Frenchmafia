@@ -29,15 +29,16 @@ const AlbumSide: React.FC<AlbumSideProps> = ({ side, onClick }) => {
         <div className="absolute inset-0 flex items-center justify-center bg-white">
           <div className="w-48 md:w-64 h-48 md:h-64 relative">
             {/* Light gradient background */}
-            
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 opacity-40" />
+            {/* Custom elements or additional effects for Kato */}
+          </div>
         </div>
-      // ) : (
+      ) : (
         // Realzn Side Design with dark theme
-        
+        <div className="absolute inset-0 flex items-center justify-center bg-black">
           <div className="w-48 md:w-64 h-48 md:h-64 relative">
             {/* Smoke Effect for realzn */}
             <div className="absolute inset-0">
-              
               <div className="absolute inset-0 animate-smoke">
                 {[...Array(20)].map((_, i) => (
                   <div
