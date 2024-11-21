@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
+ 
 interface AlbumSideProps {
   side: 'kato' | 'realzn';
   onClick: () => void;
