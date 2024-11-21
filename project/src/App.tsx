@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-import ThemeSwitch from './components/ThemeSwitch';
-import ArtistInfo from './components/ArtistInfo';
-import AudioPlayer from './components/AudioPlayer';
-import { artists } from './data/artists';
+import { motion } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
 
-function App() {
-  const [theme, setTheme] = useState<'kato' | 'realzn'>('kato');
+const App: React.FC = () => {
+  const [theme, setTheme] = useState<'kato' | 'realzn'>('kato'); // État pour gérer le thème
+
+  // Fonction pour basculer entre les thèmes
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'kato' ? 'realzn' : 'kato'));
+  };
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-700 ${
-        theme === 'kato' ? 'bg-white' : 'bg-black'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[calc(100vh-4rem)]">
-          {/* Album Cover */}
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <ThemeSwitch currentTheme={theme} onThemeChange={setTheme} />
-          </div>
+    <div className={`App ${theme === 'kato' ? 'theme-kato' : 'theme-realzn'} theme-transition`}>
+      <header className="flex justify-between items-center p-4">
+        <h1 className="text-3xl font-bold">Theme Switcher</h1>
 
-          {/* Artist Info & Player Section */}
-          <div className="w-full lg:w-1/2 space-y-8">
-            <ArtistInfo artist={artists[theme]} theme={theme} />
-            <AudioPlayer tracks={artists[theme].tracks} theme={theme} />
-          </div>
-        </div>
-      </div>
+        {/* Bouton de changement de thème */}
+        <button onClick={toggleTheme} className="text-xl p-2 rounded-full">
+          {theme === 'kato' ? (
+            <FaSun className="text-yellow-400" />
+          ) : (
+            <FaMoon className="text-gray-800" />
+          )}
+        </button>
+      </header>
+
+      <main className="flex items-center justify-center h-screen">
+        <AlbumCover side={theme} onClick={() => console.log('Album clicked')} />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
