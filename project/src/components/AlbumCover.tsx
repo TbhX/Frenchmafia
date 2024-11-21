@@ -58,4 +58,4 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   );
 };
 
-export default AlbumCover;
+export default AlbumCover; 
