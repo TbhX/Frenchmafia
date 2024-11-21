@@ -15,29 +15,48 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
     <div className="absolute inset-0 flex items-center justify-center">
       {isKato ? (
         // Icône Soleil pour Kato
-        <FaSun className="text-black" size={80} />
+        <FaSun className="text-black" size={60} />
       ) : (
         // Icône Lune pour Realzn
-        <FaMoon className="text-white" size={80} />
+        <FaMoon className="text-white" size={60} />
       )}
     </div>
   );
 
-  // Fonction pour afficher les éléments animés sur Kato
+  // Fonction pour afficher les éléments animés sur Kato (plus subtils)
   const renderKatoElements = () => (
     <div className="absolute inset-0 flex items-center justify-center">
-      {[...Array(20)].map((_, i) => (
+      {[...Array(10)].map((_, i) => (
         <div
           key={i}
           className="absolute bg-black rounded-full"
           style={{
-            width: `${Math.random() * 6 + 3}px`,  // Taille des éléments
-            height: `${Math.random() * 6 + 3}px`,
+            width: `${Math.random() * 4 + 1}px`,  // Taille des éléments réduite
+            height: `${Math.random() * 4 + 1}px`,
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
-            opacity: 0.2 + Math.random() * 0.5,  // Transparence aléatoire
-            animation: `float ${Math.random() * 5 + 3}s infinite ease-in-out`,
+            opacity: 0.1 + Math.random() * 0.3,  // Opacité plus subtile
+            animation: `float ${Math.random() * 3 + 2}s infinite ease-in-out`,
             transform: `scale(${Math.random() * 1 + 0.5})`
+          }}
+        />
+      ))}
+    </div>
+  );
+
+  // Élément propre au côté Kato (ligne flottante subtile)
+  const renderKatoLines = () => (
+    <div className="absolute inset-0 flex items-center justify-center">
+      {[...Array(3)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute border-t-2 border-black opacity-30"
+          style={{
+            width: `${Math.random() * 50 + 50}%`,  // Longueur de la ligne variable
+            top: `${Math.random() * 100}%`,
+            animation: `moveLine ${Math.random() * 3 + 2}s infinite ease-in-out`,
+            opacity: 0.3 + Math.random() * 0.4, // Opacité subtile
+            transform: `rotate(${Math.random() * 45}deg)`  // Rotation aléatoire
           }}
         />
       ))}
@@ -63,13 +82,16 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
       {/* Side Specific Design */}
       <div className="absolute inset-0 flex items-center justify-center">
         {isKato ? (
-          // Kato Side with animated black elements
+          // Kato Side with animated black elements and subtle lines
           <div className="relative w-full h-full">
             {/* Light gradient background */}
             <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-70" />
             
             {/* Render animated black elements */}
             {renderKatoElements()}
+
+            {/* Render subtle floating lines */}
+            {renderKatoLines()}
 
             {/* Render Soleil icon */}
             {renderSunMoon()}
