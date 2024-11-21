@@ -46,7 +46,7 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
 
   return (
     <motion.div
-      className={`w-full md:w-1/2 h-full relative ${isKato ? 'bg-white' : 'bg-black'}`}
+      className={`w-full h-screen relative ${isKato ? 'bg-white' : 'bg-black'}`} // Utilisation de h-screen pour une couverture totale
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 400 }}
@@ -106,4 +106,4 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({ side, onClick }) => {
   );
 };
 
-export default AlbumCover; 
+export default AlbumCover;
