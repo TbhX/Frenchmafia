@@ -1,36 +1,33 @@
+// App.tsx
 import React, { useState } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
 import ThemeSwitch from './components/ThemeSwitch';
+import ArtistInfo from './components/ArtistInfo';
+import AudioPlayer from './components/AudioPlayer';
+import { artists } from './data/artists';
 
-
-const App: React.FC = () => {
-  const [theme, setTheme] = useState<'kato' | 'realzn'>('kato'); // État pour gérer le thème
-
-  // Fonction pour basculer entre les thèmes
-  const toggleTheme = (newTheme: 'kato' | 'realzn') => {
-    setTheme(newTheme);
-  };
+function App() {
+  const [theme, setTheme] = useState<'kato' | 'realzn'>('kato');
 
   return (
-    <div className={`App ${theme === 'kato' ? 'theme-kato' : 'theme-realzn'} theme-transition`}>
-      <header className="flex justify-between items-center p-4">
-        <h1 className="text-3xl font-bold">Theme Switcher</h1>
+    <div className={`min-h-screen transition-colors duration-700 ${
+      theme === 'kato' ? 'bg-white' : 'bg-black'
+    }`}>
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[calc(100vh-4rem)]">
+          {/* Album Cover */}
+          <div className="w-full lg:w-1/2 flex justify-center">
+            <ThemeSwitch currentTheme={theme} onThemeChange={setTheme} />
+          </div>
 
-        {/* Bouton de changement de thème */}
-        <button onClick={() => toggleTheme(theme === 'kato' ? 'realzn' : 'kato')} className="text-xl p-2 rounded-full">
-          {theme === 'kato' ? (
-            <FaSun className="text-yellow-400" />
-          ) : (
-            <FaMoon className="text-gray-800" />
-          )}
-        </button>
-      </header>
-
-      <main className="flex items-center justify-center h-screen">
-        <ThemeSwitch currentTheme={theme} onThemeChange={toggleTheme} />
-      </main>
+          {/* Artist Info & Player Section */}
+          <div className="w-full lg:w-1/2 space-y-8">
+            <ArtistInfo artist={artists[theme]} theme={theme} />
+            <AudioPlayer tracks={artists[theme].tracks} theme={theme} />
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default App;
