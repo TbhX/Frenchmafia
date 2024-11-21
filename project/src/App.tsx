@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa'; // Icônes de soleil et lune
 import ThemeSwitch from './ThemeSwitch';
-import './App.css'; // Ajoute ton fichier CSS ici si nécessaire
+
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'kato' | 'realzn'>('kato'); // État pour gérer le thème
